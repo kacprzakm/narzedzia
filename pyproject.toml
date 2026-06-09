@@ -1,0 +1,75 @@
+[tool.poetry]
+name = "narzedzia.lh.pl"
+version = "0.1"
+description = "Multitool dla LH.pl"
+authors = ["Maciej Kacprzak"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115"
+uvicorn = {extras = ["standard"], version = "^0.30"}
+redis = {extras = ["hiredis"], version = "^5.0"}  
+pydantic-settings = "^2.3"
+httpx = "^0.27"          # async HTTP do Rspamd
+cryptography = "^42"     # SSL checker
+dnspython = "^2.6"       # DNS checker + SPF, DKIM
+authheaders = "^0.15"    # SPF, DKIM, DMARC weryfikacja
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8"
+pytest-asyncio = "^0.23"
+httpx = "^0.27"     
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    ".venv",
+    "venv",
+]
+
+fix = true
+show-fixes = true
+output-format = "full"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"] 
+
+#E - pycodestyle errors #F - Pyflakes #I - kolejność importów #UP - przestarzała składnia #B - częste błędy i antypatterns
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+follow_imports = "skip" #z tego co czytam to redis powinien działać z tą opcją
+check_untyped_defs = true
+[dependency-groups]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
