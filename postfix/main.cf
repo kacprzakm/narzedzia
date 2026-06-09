@@ -1,0 +1,7 @@
+myhostname = mx.testmail.b-1.pl
+mydomain = testmail.b-1.pl
+myorigin = $mydomain
+inet_interfaces = all
+inet_protocols = all
+mydestination =
+mynetworks = 127.0.0.0/8 [::1]/128 172.16.0.0/12 10.0.0.0/8
